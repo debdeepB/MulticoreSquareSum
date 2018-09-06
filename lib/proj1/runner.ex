@@ -1,6 +1,5 @@
 defmodule Runner do
-  def run(first, last, len) do
-    list = Enum.to_list first..last
+  def run(list, len) do
     result = Enum.filter list, fn starting_point -> search(starting_point, len) end
     result
   end
