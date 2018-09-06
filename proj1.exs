@@ -9,7 +9,6 @@ subproblems = Enum.chunk_every(1..n, subproblem_size)
 :erlang.statistics(:runtime)
 :erlang.statistics(:wall_clock)
 
-#initialize a genserver
 {:ok, registry} = Proj1.Registry.start_link([])
 
 tasks = Enum.map subproblems, fn subproblem ->
