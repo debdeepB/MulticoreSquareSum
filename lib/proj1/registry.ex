@@ -6,7 +6,7 @@ defmodule Proj1.Registry do
   end
 
   def push(pid, result) do
-    GenServer.call(pid, {:push, result})
+    GenServer.cast(pid, {:push, result})
   end
 
   @impl true
@@ -15,7 +15,7 @@ defmodule Proj1.Registry do
   end
 
   @impl true
-  def handle_call({:push, result}, _from, state) do
-    {:reply, result, [result | state]}
+  def handle_cast({:push, result}, state) do
+    {:noreply, [result | state]}
   end
 end
