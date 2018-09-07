@@ -1,7 +1,9 @@
 defmodule Runner do
-  def run(list, len) do
-    result = Enum.filter list, fn starting_point -> search(starting_point, len) end
-    result
+  def run(list, len, registry) do
+    results = Enum.filter list, fn starting_point -> search(starting_point, len) end
+    Enum.each results, fn result ->
+      Proj1.Registry.push(registry, result)
+    end
   end
 
   defp search(starting_point, len) do

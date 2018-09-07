@@ -1,18 +1,7 @@
 defmodule Proj1 do
-  @moduledoc """
-  Documentation for Proj1.
-  """
+  use Application
 
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> Proj1.hello()
-      :world
-
-  """
-  def hello do
-    :world
+  def start(_type, _args) do
+    Proj1.Supervisor.start_link(name: Proj1.Supervisor)
   end
 end
