@@ -16,7 +16,7 @@ defmodule Proj1.Boss do
 
   @impl true
   def handle_cast({:spawn_children, range, k, registry}, state) do
-    workers = 10000
+    workers = 100
 
     subproblem_size = (Enum.count(range) / workers) |> Float.ceil() |> :erlang.trunc()
 
