@@ -1,17 +1,17 @@
 [n, k] = System.argv |> Enum.map(&String.to_integer/1)
 
-workers = 100
+midpoint = Float.ceil(n/2) |> :erlang.trunc
 
-subproblem_size = n/workers |> Float.ceil |> :erlang.trunc
+{:ok, pid} = Proj1.Registry.start_link([])
 
-subproblems = Enum.chunk_every(1..n, subproblem_size)
+tasks_1 = M.main(1..midpoint, k, :"foo@Debdeeps-MacBook-Air.local", pid)
 
-tasks = Enum.map subproblems, fn subproblem ->
-  Task.Supervisor.async(Proj1.TaskSupervisor, fn -> Runner.run(subproblem, k, Proj1.Registry) end)
-end
+tasks_2 = M.main((midpoint+1)..n, k, :"bar@Debdeeps-MacBook-Air.local", pid)
+
+tasks = tasks_1 ++ tasks_2
 
 Enum.each tasks, fn task ->
   Task.await(task, :infinity)
 end
 
-IO.inspect :sys.get_state(Proj1.Registry)
+IO.inspect :sys.get_state(pid)

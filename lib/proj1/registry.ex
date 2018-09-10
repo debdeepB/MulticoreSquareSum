@@ -2,7 +2,7 @@ defmodule Proj1.Registry do
   use GenServer
 
   def start_link(_state) do
-    GenServer.start_link(__MODULE__, [], name: Proj1.Registry)
+    GenServer.start_link(__MODULE__, [])
   end
 
   def push(pid, result) do

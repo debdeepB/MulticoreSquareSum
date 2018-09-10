@@ -1,19 +1,16 @@
 defmodule M do
-  def main(n,k) do
+  def main(range, k, hostname, pid) do
     workers = 100
 
-    subproblem_size = n/workers |> Float.ceil |> :erlang.trunc
+    subproblem_size = Enum.count(range)/workers |> Float.ceil |> :erlang.trunc
 
-    subproblems = Enum.chunk_every(1..n, subproblem_size)
+    subproblems = Enum.chunk_every(range, subproblem_size)
 
     tasks = Enum.map subproblems, fn subproblem ->
-      Task.Supervisor.async(Proj1.TaskSupervisor, fn -> Runner.run(subproblem, k, Proj1.Registry) end)
+      Task.Supervisor.async({Proj1.TaskSupervisor, hostname}, fn -> Runner.run(subproblem, k, pid) end)
     end
 
-    Enum.each tasks, fn task ->
-      Task.await(task, :infinity)
-    end
+    tasks
 
-    IO.inspect :sys.get_state(Proj1.Registry)
   end
 end
