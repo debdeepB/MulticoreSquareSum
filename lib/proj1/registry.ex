@@ -1,8 +1,8 @@
 defmodule Proj1.Registry do
   use GenServer
 
-  def start_link(stack) when is_list(stack) do
-    GenServer.start_link(__MODULE__, stack)
+  def start_link(_state) do
+    GenServer.start_link(__MODULE__, [], name: Proj1.Registry)
   end
 
   def push(pid, result) do
@@ -10,8 +10,8 @@ defmodule Proj1.Registry do
   end
 
   @impl true
-  def init(stack) do
-    {:ok, stack}
+  def init(state) do
+    {:ok, state}
   end
 
   @impl true
