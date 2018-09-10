@@ -1,6 +1,5 @@
 [n, k] = System.argv |> Enum.map(&String.to_integer/1)
 
-
 {:ok, registry} = Proj1.Registry.start_link([])
 {:ok, boss} = Proj1.Boss.start_link([])
 

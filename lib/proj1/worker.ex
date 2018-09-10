@@ -19,5 +19,4 @@ defmodule Proj1.Worker do
     Runner.run(Enum.to_list(range), k, registry)
     {:noreply, state}
   end
-
 end

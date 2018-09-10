@@ -5,9 +5,9 @@ defmodule M do
 
     Proj1.Boss.spawn_children(boss, 1..n, k, registry)
 
-    #wait for the boss to end
+    # wait for the boss to end
     :sys.get_state(boss, :infinity)
 
-    IO.inspect :sys.get_state(registry)
+    IO.inspect(:sys.get_state(registry))
   end
 end

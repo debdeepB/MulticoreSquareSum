@@ -16,23 +16,24 @@ defmodule Proj1.Boss do
 
   @impl true
   def handle_cast({:spawn_children, range, k, registry}, state) do
-
     workers = 10000
-    
-    subproblem_size = Enum.count(range)/workers |> Float.ceil |> :erlang.trunc
+
+    subproblem_size = (Enum.count(range) / workers) |> Float.ceil() |> :erlang.trunc()
 
     subproblems = Enum.chunk_every(range, subproblem_size)
 
-    workers = Enum.map subproblems, fn subproblem ->
-      {:ok, pid} = Proj1.Worker.start_link([])
-      Proj1.Worker.run(pid, subproblem, k, registry) #async call
-      pid
-    end
+    workers =
+      Enum.map(subproblems, fn subproblem ->
+        {:ok, pid} = Proj1.Worker.start_link([])
+        # async call
+        Proj1.Worker.run(pid, subproblem, k, registry)
+        pid
+      end)
 
-    Enum.map workers, fn worker ->
+    Enum.map(workers, fn worker ->
       :sys.get_state(worker)
-    end
-    
+    end)
+
     {:noreply, state}
   end
 end
