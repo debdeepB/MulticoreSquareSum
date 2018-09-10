@@ -1,6 +1,45 @@
 # Proj1
 
-**TODO: Add description**
+## Group Information
+
+Debdeep Basu (UFID: 4301-3324)
+
+Ali Akbar (UFID: 8498-3349)
+
+## Instructions
+
+After unzipping the project, cd into the root directory:
+
+```bash
+cd proj1
+```
+
+Run proj1.exs with two command line arguments N and k
+
+```bash
+mix run proj1.exs 1000000 4
+```
+
+## Implementation information
+
+### 1. Size of work unit
+
+We have divided the problem space equally by the total number of workers, so that each worker performs the same amount of work. So if N is 1000000 and we have 100 workers then the work unit is 1000000/100 = 10000.
+
+### 2. The result of running: mix run proj1.exs 1000000 4
+
+[]
+
+### 3. Running time of N = 1000000 and k = 4
+
+real: 6.286s
+user: 13.20s
+system: 1.01s
+
+CPU/real = (user + system)/real = (13.20 + 1.01)/6.286 = 2.260579064587973
+
+### 4. Largest problem we have managed to solve
+
 
 ## Installation
 
