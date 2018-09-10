@@ -7,8 +7,7 @@ defmodule Proj1.Supervisor do
 
   def init(:ok) do
     children = [
-      {Proj1.Registry, name: Proj1.Registry},
-      {Task.Supervisor, name: Proj1.TaskSupervisor}
+      {Proj1.Registry, name: Proj1.Registry}
     ]
 
     Supervisor.init(children, strategy: :one_for_all)
