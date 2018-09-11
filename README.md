@@ -42,9 +42,11 @@ CPU/real = (user + system)/real = (1.457+0.138)/0.597 = 2.6716917922948076
 
 ### 3.4 Largest problem we have managed to solve
 
+n = 100000000, k = 20 is the largest instance that we have managed to solve.
+
 ## 4. Bonus question (Multiple remote nodes)
 
-We managed to create two nodes and were able to calculate results for n=100000000 and k=20 by using two different machines. We are able to solve the problem in under 2 minutes with 8 cores on one machine and 4 cores on another. You can find the project in the proj1-bonus folder.
+We managed to create two nodes and were able to calculate results for n=100000000 and k=20 by using two different machines. You can find the project in the proj1-bonus folder.
 
 ## 5. Installation
 
