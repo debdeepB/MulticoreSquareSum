@@ -1,12 +1,12 @@
 # Proj1
 
-## Group Information
+## 1. Group Information
 
 Debdeep Basu (UFID: 4301-3324)
 
 Ali Akbar (UFID: 8498-3349)
 
-## Instructions
+## 2. Instructions
 
 After unzipping the project, cd into the root directory:
 
@@ -20,19 +20,19 @@ Run proj1.exs with two command line arguments N and k
 mix run proj1.exs 1000000 4
 ```
 
-## Implementation information
+## 3. Implementation information (single node)
 
-### 1. Size of work unit
+### 3.1 Size of work unit
 
 We have a boss genserver and many worker genservers. The boss genserver assigns work to the worker genservers.
 
 The boss divides work equally amongst the total number of workers, so that each worker performs the same amount of work. So if N is 1000000 and we have 100 workers then the work unit is 1000000/100 = 10000.
 
-### 2. The result of running: mix run proj1.exs 1000000 4
+### 3.2 The result of running: mix run proj1.exs 1000000 4
 
 []
 
-### 3. Running time of N = 1000000 and k = 4
+### 3.3 Running time of N = 1000000 and k = 4
 
 real: 6.286s
 user: 13.20s
@@ -40,10 +40,17 @@ system: 1.01s
 
 CPU/real = (user + system)/real = (13.20 + 1.01)/6.286 = 2.260579064587973
 
-### 4. Largest problem we have managed to solve
+### 3.4 Largest problem we have managed to solve
+
+## 4. Bonus question (Multiple remote nodes)
+
+### 4.1 Total number of remote nodes
+
+We have been able to use 2 remote nodes.
+On solving n=100000000 and k=20, it took s and the ratio of CPU time to real time was: . You can find the project in the proj1-bonus folder.
 
 
-## Installation
+## 5. Installation
 
 If [available in Hex](https://hex.pm/docs/publish), the package can be installed
 by adding `proj1` to your list of dependencies in `mix.exs`:
