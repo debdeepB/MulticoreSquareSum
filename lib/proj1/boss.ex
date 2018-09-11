@@ -31,7 +31,7 @@ defmodule Proj1.Boss do
       end)
 
     Enum.map(workers, fn worker ->
-      :sys.get_state(worker)
+      :sys.get_state(worker, :infinity)
     end)
 
     {:noreply, state}
