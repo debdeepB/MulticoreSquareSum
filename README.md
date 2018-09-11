@@ -34,11 +34,11 @@ The boss divides work equally amongst the total number of workers, so that each 
 
 ### 3.3 Running time of N = 1000000 and k = 4
 
-real: 6.286s
-user: 13.20s
-system: 1.01s
+real	0m0.597s
+user	0m1.457s
+sys		0m0.138s
 
-CPU/real = (user + system)/real = (13.20 + 1.01)/6.286 = 2.260579064587973
+CPU/real = (user + system)/real = (1.457+0.138)/0.597 = 2.6716917922948076
 
 ### 3.4 Largest problem we have managed to solve
 
