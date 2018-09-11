@@ -24,7 +24,9 @@ mix run proj1.exs 1000000 4
 
 ### 1. Size of work unit
 
-We have divided the problem space equally by the total number of workers, so that each worker performs the same amount of work. So if N is 1000000 and we have 100 workers then the work unit is 1000000/100 = 10000.
+We have a boss genserver and many worker genservers. The boss genserver assigns work to the worker genservers.
+
+The boss divides work equally amongst the total number of workers, so that each worker performs the same amount of work. So if N is 1000000 and we have 100 workers then the work unit is 1000000/100 = 10000.
 
 ### 2. The result of running: mix run proj1.exs 1000000 4
 
