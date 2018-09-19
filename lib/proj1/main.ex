@@ -1,19 +1,13 @@
 defmodule M do
-  def main(n,k) do
-    workers = 100
+  def main(n, k) do
+    {:ok, registry} = Proj1.Registry.start_link([])
+    {:ok, boss} = Proj1.Boss.start_link([])
 
-    subproblem_size = n/workers |> Float.ceil |> :erlang.trunc
+    Proj1.Boss.spawn_children(boss, 1..n, k, registry)
 
-    subproblems = Enum.chunk_every(1..n, subproblem_size)
+    # wait for the boss to end
+    :sys.get_state(boss, :infinity)
 
-    tasks = Enum.map subproblems, fn subproblem ->
-      Task.Supervisor.async(Proj1.TaskSupervisor, fn -> Runner.run(subproblem, k, Proj1.Registry) end)
-    end
-
-    Enum.each tasks, fn task ->
-      Task.await(task, :infinity)
-    end
-
-    IO.inspect :sys.get_state(Proj1.Registry)
+    IO.inspect(:sys.get_state(registry))
   end
 end

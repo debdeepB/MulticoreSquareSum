@@ -1,12 +1,12 @@
 # Proj1
 
-## Group Information
+## 1. Group Information
 
 Debdeep Basu (UFID: 4301-3324)
 
 Ali Akbar (UFID: 8498-3349)
 
-## Instructions
+## 2. Instructions
 
 After unzipping the project, cd into the root directory:
 
@@ -20,28 +20,35 @@ Run proj1.exs with two command line arguments N and k
 mix run proj1.exs 1000000 4
 ```
 
-## Implementation information
+## 3. Implementation information (single node)
 
-### 1. Size of work unit
+### 3.1 Size of work unit
 
-We have divided the problem space equally by the total number of workers, so that each worker performs the same amount of work. So if N is 1000000 and we have 100 workers then the work unit is 1000000/100 = 10000.
+We have a boss genserver and many worker genservers. The boss genserver assigns work to the worker genservers.
 
-### 2. The result of running: mix run proj1.exs 1000000 4
+The boss divides work equally amongst the total number of workers, so that each worker performs the same amount of work. So if N is 1000000 and we have 100 workers then the work unit is 1000000/100 = 10000.
+
+### 3.2 The result of running: mix run proj1.exs 1000000 4
 
 []
 
-### 3. Running time of N = 1000000 and k = 4
+### 3.3 Running time of N = 1000000 and k = 4
 
-real: 6.286s
-user: 13.20s
-system: 1.01s
+real	0m0.597s
+user	0m1.457s
+sys		0m0.138s
 
-CPU/real = (user + system)/real = (13.20 + 1.01)/6.286 = 2.260579064587973
+CPU/real = (user + system)/real = (1.457+0.138)/0.597 = 2.6716917922948076
 
-### 4. Largest problem we have managed to solve
+### 3.4 Largest problem we have managed to solve
 
+n = 100000000, k = 20 is the largest instance that we have managed to solve.
 
-## Installation
+## 4. Bonus question (Multiple remote nodes)
+
+We managed to create two nodes and were able to calculate results for n=100000000 and k=20 by using two different machines. You can find the project in the proj1-bonus folder.
+
+## 5. Installation
 
 If [available in Hex](https://hex.pm/docs/publish), the package can be installed
 by adding `proj1` to your list of dependencies in `mix.exs`:
@@ -57,4 +64,3 @@ end
 Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
 and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
 be found at [https://hexdocs.pm/proj1](https://hexdocs.pm/proj1).
-
